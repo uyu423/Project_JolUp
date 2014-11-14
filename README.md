@@ -19,6 +19,6 @@ qt4-bin-dbg         qt4-designer        qt4-linguist-tools  qt4-default         
 
 개인적으로 처음하는 GUI 프로그래밍에 C++ 객체지향 개념을 익히기 위해 시작한 프로젝트이니 소스 코드가 미숙하거나 문제가 있더라도 양해바랍니다. 감사합니다.
 
-사용하는 Framework인 Qt 4.8이 LGPL 라이센스인점을 고려, LGPL 라이센스를 걸어두었습니다. (Qt는 4.3 이전 GPL, 이후 LGPL)
+사용하는 Framework인 Qt 4.8이 LGPL 라이센스인점을 고려, LGPL 라이센스를 걸어두었습니다. Qt에 걸린 LGPL 2.1 라이센스는 다음 링크를 참조하세요. ( http://qt-project.org/doc/qt-4.8/lgpl.html )
 
 사실 일개 대학생이 라이센스에 대해 얼마나 잘 알겠습니까 하하핳
