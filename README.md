@@ -13,7 +13,7 @@ $ sudo apt-get install "^qt4-"
 
 qt4-bin-dbg         qt4-designer        qt4-linguist-tools  qt4-default         qt4-dev-tools       qt4-qmake qt4-demos           qt4-doc             qt4-qmlviewer qt4-demos-dbg       qt4-doc-html        qt4-qtconfig
 
-(개개의 패키지로 설치하시려면 위 패키지명을 참고하세요. Qt5를 사용하지 않은 이유는 5버전에서 아직 리눅스 한글 이슈가 남아있습니다.)
+(개개의 패키지로 설치하시려면 위 패키지명을 참고하세요. Qt5를 사용하지 않은 이유는 아직 5버전에서 한글 이슈(Linux)가 남아있습니다.)
 
 소스코드는 Vim 에디터와 qmake 만을 통해 컴파일 되었으며, GUI만 Designer를 통해 그린 뒤 함수 오버로딩을 통해 재정의 되었습니다.
 
