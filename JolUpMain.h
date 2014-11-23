@@ -8,9 +8,13 @@
 class MyInfo;
 class LectureAdd;
 class LectureModify;
+class LectureManager;
 
 //Data Class
 class MyInfoData;
+
+//BO Class
+class LectureNodeFunc;
 
 class JolUpMain : public QMainWindow, public Ui::JolUpMain {
 				Q_OBJECT
@@ -18,7 +22,8 @@ class JolUpMain : public QMainWindow, public Ui::JolUpMain {
 public:
 				JolUpMain();
 				void showMyInfoLabel();
-				static void editMyInfo();
+				void showTotalPointLabel();
+				void refeshLectureInfo();
 
 private slots:
 				//make dialog slots
@@ -27,7 +32,9 @@ private slots:
 				void showLectureModifyDialog();
 
 				void showMyInfoDialog();
-				void updateMyInfo(const QString *data);
+				void updateMyInfo(const QString *);
+				void updateTotalPoint(const qint32 *);
+				void addLectureNode(const QString &, const qint32 &, const bool *, const double &);
 
 private:
 				//Dialog Class Create
@@ -37,7 +44,7 @@ private:
 
 				//Data Class Create
 				MyInfoData *myinfo;
-				//LectureManager manager;
+				LectureManager *manager;
 
 				void createActions();
 				void createButtons();

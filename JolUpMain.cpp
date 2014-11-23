@@ -9,11 +9,18 @@
 
 //Data Include
 #include "MyInfoData.h"
+#include "LectureManager.h"
+#include "LectureData.h"
+
+//BO Include
+#include "LectureNodeFunc.h"
+
 
 JolUpMain::JolUpMain() : QMainWindow() {
 				setupUi(this);
 
 				myinfo = new MyInfoData(NULL, NULL);
+				manager = new LectureManager();
 				showMyInfoLabel();
 				createActions();
 				createButtons();
@@ -73,7 +80,10 @@ void JolUpMain::showMyInfoDialog() {
 				myinfo_d = new MyInfo(this);
 				myinfo_d->lineEdit_NameData->setText(myinfo->getName());
 				myinfo_d->lineEdit_MajorData->setText(myinfo->getMajor());
+				myinfo_d->spinBox_NeedMajorPointData->setValue(manager->getTotalMajorPoint());
+				myinfo_d->spinBox_NeedNormalPointData->setValue(manager->getTotalNormalPoint());
 				connect(myinfo_d, SIGNAL(confirmData(const QString *)), this, SLOT(updateMyInfo(const QString *)));
+				connect(myinfo_d, SIGNAL(confirmData(const qint32 *)), this, SLOT(updateTotalPoint(const qint32 *)));
 				myinfo_d->exec();
 }
 
@@ -83,9 +93,27 @@ void JolUpMain::updateMyInfo(const QString *data) {
 				this->showMyInfoLabel();
 }
 
+void JolUpMain::updateTotalPoint(const qint32 *data) {
+				manager->setTotalMajorPoint((qint32)data[0]);
+				manager->setTotalNormalPoint((qint32)data[1]);
+				this->showTotalPointLabel();
+}
+
 void JolUpMain::showLectureAddDialog() {
 				lectureadd_d = new LectureAdd(this);
+				qDebug("2\n");
+				connect(lectureadd_d, SIGNAL(confirmData(const QString &, const qint32 &, const bool *, const double &)), 
+								this, SLOT(addLectureNode(const QString &, const qint32 &, const bool *, const double &)));
 				lectureadd_d->exec();
+}
+
+void JolUpMain::addLectureNode(const QString &str, const qint32 &num, const bool *bol, const double &doub) {
+				qDebug("1\n");
+				LectureNodeFunc::addNode(manager, str, num, bol, doub);
+}
+
+void JolUpMain::refeshLectureInfo() {
+
 }
 
 void JolUpMain::showLectureModifyDialog() {
@@ -98,5 +126,14 @@ void JolUpMain::showMyInfoLabel() {
 				label_MajorData->setText(myinfo->getMajor());
 				label_NameData->show();
 				label_MajorData->show();
+}
+
+void JolUpMain::showTotalPointLabel() {
+				label_NeedMajorPointData->setText(QString::number(manager->getTotalMajorPoint()));
+				label_NeedNormalPointData->setText(QString::number(manager->getTotalNormalPoint()));
+				label_NeedTotalPointData->setText(QString::number(manager->getTotalMajorPoint() + manager->getTotalNormalPoint()));
+				label_NeedMajorPointData->show();
+				label_NeedNormalPointData->show();
+				label_NeedTotalPointData->show();
 }
 

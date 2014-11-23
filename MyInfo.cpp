@@ -9,8 +9,14 @@ MyInfo::MyInfo(QWidget *parent) : QDialog(parent) {
 }
 
 void MyInfo::clickOK() {
-				QString Data[2];
-				Data[0] = lineEdit_NameData->text();
-				Data[1] = lineEdit_MajorData->text();
-				emit confirmData(Data);
+				QString str[2];
+				qint32 arr[2];
+				str[0] = lineEdit_NameData->text();
+				str[1] = lineEdit_MajorData->text();
+				emit confirmData(str);
+				str[0] = spinBox_NeedMajorPointData->text();
+				str[1] = spinBox_NeedNormalPointData->text();
+				arr[0] = str[0].toInt();
+				arr[1] = str[1].toInt();
+				emit confirmData(arr);
 }

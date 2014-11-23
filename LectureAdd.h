@@ -9,6 +9,14 @@ class LectureAdd : public QDialog, public Ui::LectureAdd {
 
 public:
 				LectureAdd(QWidget *parent = 0);
+				bool completeEnable;
+
+private slots:
+				void clickOK();
+				void checkedComplete(int);
+
+signals:
+				void confirmData(const QString &, const qint32 &, const bool *, const double &);
 
 };
 

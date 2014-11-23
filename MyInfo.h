@@ -15,6 +15,7 @@ private slots:
 
 signals:
 				void confirmData(const QString *);
+				void confirmData(const qint32 *);
 };
 
 #endif
