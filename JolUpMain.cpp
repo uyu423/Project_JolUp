@@ -22,6 +22,7 @@ JolUpMain::JolUpMain() : QMainWindow() {
 				myinfo = new MyInfoData(NULL, NULL);
 				manager = new LectureManager();
 				showMyInfoLabel();
+				refreshLectureInfo();
 				createActions();
 				createButtons();
 }
@@ -110,10 +111,22 @@ void JolUpMain::showLectureAddDialog() {
 void JolUpMain::addLectureNode(const QString &str, const qint32 &num, const bool *bol, const double &doub) {
 				qDebug("1\n");
 				LectureNodeFunc::addNode(manager, str, num, bol, doub);
+				this->refreshLectureInfo();
 }
 
-void JolUpMain::refeshLectureInfo() {
+void JolUpMain::refreshLectureInfo() {
+				LectureNodeFunc::selectAllNode(manager, this);
+}
 
+void JolUpMain::refreshLectureInfo(int major, int normal) {
+				label_CompleteMajorPointData->setText(QString::number(major));
+				label_CompleteNormalPointData->setText(QString::number(normal));
+				label_RemainPointData->setText(QString::number(manager->getTotalMajorPoint() - major)+"/"+QString::number(manager->getTotalNormalPoint() - normal));
+				label_CompleteTotalPointData->setText(QString::number(major + normal));
+				label_CompleteMajorPointData->show();
+				label_CompleteNormalPointData->show();
+				label_RemainPointData->show();
+				label_CompleteTotalPointData->show();
 }
 
 void JolUpMain::showLectureModifyDialog() {

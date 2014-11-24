@@ -141,14 +141,14 @@
         <item>
          <layout class="QHBoxLayout" name="horizontalLayout_7">
           <item>
-           <widget class="QLabel" name="label_CompleteNomalPoint">
+           <widget class="QLabel" name="label_CompleteNormalPoint">
             <property name="text">
              <string>수강일반학점</string>
             </property>
            </widget>
           </item>
           <item>
-           <widget class="QLabel" name="label_CompleteNomalPointData">
+           <widget class="QLabel" name="label_CompleteNormalPointData">
             <property name="text">
              <string/>
             </property>

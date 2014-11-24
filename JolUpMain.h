@@ -23,7 +23,8 @@ public:
 				JolUpMain();
 				void showMyInfoLabel();
 				void showTotalPointLabel();
-				void refeshLectureInfo();
+				void refreshLectureInfo();
+				void refreshLectureInfo(int, int);
 
 private slots:
 				//make dialog slots
